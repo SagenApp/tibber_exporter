@@ -88,10 +88,10 @@ public class TibberExporter {
     /*
      * Inner class
      */
-    private int port;
-    private String tibberToken;
+    private final int port;
+    private final String tibberToken;
+    private final CollectorRegistry prometheusRegistry;
     private Collector tibberCollector;
-    private CollectorRegistry prometheusRegistry;
     private HTTPServer httpServer;
 
     public TibberExporter(int port, String tibberToken) {
