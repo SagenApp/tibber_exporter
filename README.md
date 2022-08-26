@@ -16,7 +16,14 @@ Create a .env file some place secure, for example `/root/.secret/` and make sure
 ### Run the docker container
     docker run --env-file /root/.secret/tibber-token.env -p9456:9456 tibber_exporter
 
-### Helping out
+### Edit prometheus configuration
+Edit the file `/etc/prometheus/prometheus.yml` and add the following:
+
+      - job_name: tibber_export
+        static_configs:
+          - targets: ["localhost:9456"]
+
+### Contributing
 I gladly accept contributions of any size or capacity. My goal is to create an application that can be used 
 by every tech-loving customer of Tibber to include Tibber statistics in Grafana views or even alerts.
 
