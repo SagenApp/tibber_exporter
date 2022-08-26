@@ -1,5 +1,7 @@
 # Tibber Exporter for Prometheus written in Java
 
+![CodeQL status](https://github.com/SagenApp/tibber_exporter/actions/workflows/codeql-analysis.yml/badge.svg?branch=main)
+
 #### NB: This application is work in progress and not yet completed.
 
 To run this application you need a personal token for the Tibber API. This can be found here: [Tibber Developer Portal](https://developer.tibber.com/settings/access-token)
