@@ -1,6 +1,7 @@
 # Tibber Exporter for Prometheus written in Java
 
 ![CodeQL status](https://github.com/SagenApp/tibber_exporter/actions/workflows/codeql-analysis.yml/badge.svg?branch=main)
+[![Publish Docker Image](https://github.com/SagenApp/tibber_exporter/actions/workflows/docker-publish.yml/badge.svg?branch=main)](https://github.com/SagenApp/tibber_exporter/actions/workflows/docker-publish.yml)
 
 #### NB: This application is work in progress and not yet completed.
 
