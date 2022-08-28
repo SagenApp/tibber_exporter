@@ -17,27 +17,41 @@
 
 package app.sagen.collector;
 
+import app.sagen.api.TibberAPIClient;
+import app.sagen.api.model.Home;
 import io.prometheus.client.Collector;
 import io.prometheus.client.CounterMetricFamily;
 import io.prometheus.client.GaugeMetricFamily;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
 public class TibberCollector extends Collector implements Collector.Describable {
+    private static final Logger logger = LoggerFactory.getLogger(TibberCollector.class);
 
-    private final String tibberToken;
+    private final TibberAPIClient tibberAPIClient;
 
     public TibberCollector(String tibberToken) {
-        this.tibberToken = tibberToken;
+        this.tibberAPIClient = new TibberAPIClient(tibberToken);
     }
 
     @Override
     public List<MetricFamilySamples> collect() {
         List<MetricFamilySamples> metricFamilySamples = new ArrayList<>();
+
+        Home[] homes = null;
+        try {
+            homes = tibberAPIClient.fetchHomes();
+        } catch (Exception e) {
+            logger.error("Could not fetch homes... {}", e, e);
+            return Collections.emptyList();
+        }
 
         // TODO, do the actual work of this request and remove these random values
         try {
